@@ -91,5 +91,33 @@ export const courseModules: Module[] = [
                 duration: "E-book"
             }
         ]
+    },
+    {
+        id: "bonus-digital-audit",
+        title: "🎁 Bonus: Digital Audit Kit",
+        isBonus: true,
+        lessons: [
+            {
+                id: "digital-audit-kit",
+                title: "The Tracking Guide",
+                pdfUrl: "/Digital_Audit_Kit_The_Tracking_Guide.pdf",
+                description: "Comprehensive guide for digital tracking and auditing.",
+                duration: "PDF Guide"
+            }
+        ]
+    },
+    {
+        id: "bonus-emotional-shielding",
+        title: "🎁 Bonus: Emotional Shielding",
+        isBonus: true,
+        lessons: [
+            {
+                id: "emotional-shielding-protocol",
+                title: "The Self-Control Guide",
+                pdfUrl: "/Emotional_Shielding_Protocol__The_Self-Control_Guide.pdf",
+                description: "Protocol for emotional self-control and shielding.",
+                duration: "PDF Guide"
+            }
+        ]
     }
 ];

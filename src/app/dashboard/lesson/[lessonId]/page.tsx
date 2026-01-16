@@ -3,16 +3,18 @@ import { PDFViewer } from '@/components/PDFViewer';
 import { notFound } from 'next/navigation';
 
 interface Props {
-    params: { lessonId: string };
+    params: Promise<{ lessonId: string }>;
 }
 
 export default async function LessonPage({ params }: Props) {
+    const { lessonId } = await params;
+
     // Find lesson
     let foundLesson = null;
     let foundModule = null;
 
     for (const mod of courseModules) {
-        const lesson = mod.lessons.find(l => l.id === params.lessonId);
+        const lesson = mod.lessons.find(l => l.id === lessonId);
         if (lesson) {
             foundLesson = lesson;
             foundModule = mod;

@@ -7,8 +7,6 @@ import { cn } from '@/components/Sidebar';
 
 // Configure worker locally
 pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
 
 interface PDFViewerProps {
     url: string;

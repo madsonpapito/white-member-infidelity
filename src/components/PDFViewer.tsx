@@ -68,8 +68,8 @@ export function PDFViewer({ url }: PDFViewerProps) {
                     file={url}
                     onLoadSuccess={onDocumentLoadSuccess}
                     className="shadow-lg"
-                    loading={<div className="p-10 text-gray-500">Carregando PDF...</div>}
-                    error={<div className="p-10 text-red-500">Erro ao carregar PDF.</div>}
+                    loading={<div className="p-10 text-gray-500">Loading PDF...</div>}
+                    error={<div className="p-10 text-red-500">Error loading PDF.</div>}
                 >
                     <Page
                         pageNumber={pageNumber}

@@ -46,14 +46,14 @@ export default async function LessonPage({ params }: Props) {
                     <PDFViewer url={foundLesson.pdfUrl} />
                 ) : (
                     <div className="flex items-center justify-center h-64 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200">
-                        <p className="text-gray-500">Este conteúdo é um vídeo ou texto (Sem PDF disponível).</p>
+                        <p className="text-gray-500">This content is a video or text (No PDF available).</p>
                     </div>
                 )}
             </div>
 
             <div className="flex justify-end">
                 <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow">
-                    Marcar como Concluída
+                    Mark as Complete
                 </button>
             </div>
         </div>

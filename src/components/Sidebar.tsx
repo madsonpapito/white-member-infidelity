@@ -37,7 +37,7 @@ export function Sidebar() {
             >
                 <div className="p-6 hidden lg:block">
                     <h1 className="text-xl font-bold text-blue-900">Reading Signs</h1>
-                    <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Membro VIP</p>
+                    <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider">VIP Member</p>
                 </div>
 
                 <nav className="p-4 space-y-6">

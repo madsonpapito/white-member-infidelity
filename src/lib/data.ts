@@ -16,79 +16,78 @@ export type Module = {
 export const courseModules: Module[] = [
     {
         id: "onboarding",
-        title: "👋 Comece Por Aqui",
+        title: "👋 Start Here",
         lessons: [
             {
-                id: "aula-0",
-                title: "Boas-vindas + Como usar a plataforma",
-                description: "Assista este vídeo para entender como navegar na plataforma.",
+                id: "welcome",
+                title: "Welcome + How to Use the Platform",
+                description: "Watch this video to understand how to navigate the platform.",
                 duration: "5 min",
-                // pdfUrl: "/Module-0.pdf" // If applicable
             }
         ]
     },
     {
         id: "mod-01",
-        title: "Módulo 1: Os Fundamentos",
+        title: "Module 1: The Fundamentals",
         lessons: [
             {
-                id: "fundamentos-mentira",
-                title: "Os fundamentos da mentira e como o cérebro reage",
+                id: "foundations-of-lying",
+                title: "The Foundations of Lying & How the Brain Reacts",
                 pdfUrl: "/Module-1.pdf",
-                description: "Entenda a psicologia por trás da mentira.",
-                duration: "10 min Leitura"
+                description: "Understand the psychology behind deception.",
+                duration: "10 min Read"
             }
         ]
     },
     {
         id: "mod-02",
-        title: "Módulo 2: Linguagem Corporal",
+        title: "Module 2: Body Language",
         lessons: [
             {
-                id: "leitura-corporal",
-                title: "Lendo olhos, mãos e postura – O corpo fala",
+                id: "reading-body-language",
+                title: "Reading Eyes, Hands & Posture – The Body Speaks",
                 pdfUrl: "/Module-2.pdf",
-                description: "Aprenda a identificar sinais não-verbais.",
-                duration: "15 min Leitura"
+                description: "Learn to identify non-verbal signals.",
+                duration: "15 min Read"
             }
         ]
     },
     {
         id: "mod-03",
-        title: "Módulo 3: O Mundo Digital",
+        title: "Module 3: The Digital World",
         lessons: [
             {
-                id: "analise-digital",
-                title: "Analisando mensagens de texto e comportamento online",
+                id: "digital-analysis",
+                title: "Analyzing Text Messages & Online Behavior",
                 pdfUrl: "/Module-3.pdf",
-                description: "Checklist interativo para análise digital.",
-                duration: "12 min Leitura"
+                description: "Interactive checklist for digital analysis.",
+                duration: "12 min Read"
             }
         ]
     },
     {
         id: "mod-04",
-        title: "Módulo 4: O Método da Verdade",
+        title: "Module 4: The TRUTH Method",
         lessons: [
             {
-                id: "confronto-seguro",
-                title: "Como confrontar com segurança",
+                id: "confrontation-guide",
+                title: "How to Confront with Confidence",
                 pdfUrl: "/Module-4-The-TRUTH-Method-How-to-Confront-with-Confidence.pdf",
-                description: "Script passo a passo para o confronto.",
-                duration: "20 min Leitura"
+                description: "Step-by-step script for confrontation.",
+                duration: "20 min Read"
             }
         ]
     },
     {
         id: "bonus",
-        title: "🎁 Bônus Exclusivo",
+        title: "🎁 Exclusive Bonus",
         isBonus: true,
         lessons: [
             {
-                id: "reconstruindo-confianca",
-                title: "Guia para Reconstruir a Confiança e Intimidade",
+                id: "rebuilding-trust",
+                title: "Guide to Rebuilding Trust & Intimacy",
                 pdfUrl: "/Bonus-Module.pdf",
-                description: "E-book completo.",
+                description: "Complete e-book.",
                 duration: "E-book"
             }
         ]

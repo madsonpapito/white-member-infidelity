@@ -2,20 +2,42 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Lock, Mail, ArrowRight } from 'lucide-react';
+import { Lock, Mail, ArrowRight, AlertCircle } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      router.push('/dashboard');
-    }, 800);
+    setError(null);
+
+    try {
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (authError) {
+        setError(authError.message === 'Invalid login credentials' 
+          ? 'E-mail ou senha incorretos.' 
+          : authError.message);
+        setLoading(false);
+        return;
+      }
+
+      if (data.user) {
+        router.push('/dashboard');
+      }
+    } catch (err) {
+      setError('Ocorreu um erro inesperado. Tente novamente.');
+      setLoading(false);
+    }
   };
 
   return (
@@ -26,14 +48,22 @@ export default function LoginPage() {
             Reading Signs
           </h2>
           <p className="mt-2 text-sm text-gray-500">
-            Access your exclusive member area
+            Acesse sua área de membros exclusiva
           </p>
         </div>
+
+        {error && (
+          <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-md flex items-center gap-3">
+            <AlertCircle className="h-5 w-5 text-red-500" />
+            <p className="text-sm text-red-700">{error}</p>
+          </div>
+        )}
+
         <form className="mt-6 sm:mt-8 space-y-5 sm:space-y-6" onSubmit={handleLogin}>
           <div className="space-y-4">
             <div>
               <label htmlFor="email-address" className="sr-only">
-                Email
+                E-mail
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -48,13 +78,13 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none relative block w-full px-3 py-3.5 pl-10 border border-gray-300 placeholder-gray-400 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
-                  placeholder="Your email address"
+                  placeholder="Seu endereço de e-mail"
                 />
               </div>
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                Password
+                Senha
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -69,7 +99,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none relative block w-full px-3 py-3.5 pl-10 border border-gray-300 placeholder-gray-400 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
-                  placeholder="Your password"
+                  placeholder="Sua senha"
                 />
               </div>
             </div>
@@ -84,13 +114,13 @@ export default function LoginPage() {
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
               <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
-                Remember me
+                Lembrar de mim
               </label>
             </div>
 
             <div className="text-sm">
               <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                Forgot password?
+                Esqueceu a senha?
               </a>
             </div>
           </div>
@@ -107,11 +137,11 @@ export default function LoginPage() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Signing in...
+                  Entrando...
                 </span>
               ) : (
                 <span className="flex items-center">
-                  Access Platform <ArrowRight className="ml-2 h-5 w-5" />
+                  Acessar Plataforma <ArrowRight className="ml-2 h-5 w-5" />
                 </span>
               )}
             </button>
